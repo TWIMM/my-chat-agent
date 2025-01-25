@@ -52,4 +52,42 @@ Avant de commencer, assurez-vous que votre machine dispose des éléments suivan
 
 
 3. Add APi KEYS  
+
+
+4. Usecase :  
+   ```html
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chat Widget</title>
+        <style>
+            body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            iframe {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                width: 70vh;
+                height: 70vh;
+                /* Half of the viewport height */
+                border: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <iframe src="http://localhost:3000/" frameborder="0"></iframe>
+    </body>
+
+    </html>
+
+   
+   
    
