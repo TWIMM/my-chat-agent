@@ -1,8 +1,11 @@
 const express = require('express');
+require('dotenv').config();
+
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 const HomeRoutes = require('./src/Routes/HomeRoutes');
+const AiRouter = require('./src/Routes/AiRoutes');
 
 
 class App {
@@ -35,6 +38,8 @@ class App {
     setRoutes() {
         // Routes to handle user-related endpoints
         this.app.use('/', HomeRoutes);  // Corrected reference to 'this.app'
+        this.app.use('/ai-api', AiRouter); // Add this route
+
     }
 
     listen(port) {

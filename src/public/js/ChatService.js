@@ -37,12 +37,35 @@ class ChatService {
     }
 
 
-    // Simulate sending the message to the server
+    /* // Simulate sending the message to the server
     sendMessageToServer(message) {
         setTimeout(() => {
             this.addToLog(message, false);
         }, 2000);
+    } */
+
+    sendMessageToServer(message) {
+        fetch('/ai-api/ai-response', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ message }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.response) {
+                    this.addToLog(data.response, false); // Display AI's response
+                } else {
+                    this.addToLog('No response from AI.', false);
+                }
+            })
+            .catch((error) => {
+                console.error('Error fetching AI response:', error);
+                this.addToLog('Error communicating with AI.', false);
+            });
     }
+
 
     // Add a message to the chat log
     addToLog(message, user) {
