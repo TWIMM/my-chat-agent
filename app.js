@@ -6,6 +6,8 @@ const cors = require('cors');
 const path = require('path');
 const HomeRoutes = require('./src/Routes/HomeRoutes');
 const AiRouter = require('./src/Routes/AiRoutes');
+const { DatabaseService } = require('./src/Services/DatabaseService');
+const databaseService = new DatabaseService();
 
 
 class App {
@@ -14,6 +16,16 @@ class App {
         this.setMiddlewares();
         this.setViews();
         this.setRoutes();
+        this.setDatabase();
+    }
+
+    async setDatabase() {
+        try {
+            await databaseService.connectToDB();
+            //console.log("Database connected successfully");
+        } catch (error) {
+            console.error("Error connecting to the database:", error);
+        }
     }
 
     setMiddlewares() {
