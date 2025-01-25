@@ -56,6 +56,7 @@ Avant de commencer, assurez-vous que votre machine dispose des éléments suivan
 
 4. Usecase :  
    ```html
+      
     <!DOCTYPE html>
     <html lang="en">
 
@@ -67,10 +68,12 @@ Avant de commencer, assurez-vous que votre machine dispose des éléments suivan
             body {
                 height: 100%;
                 margin: 0;
+                background: #e0f7fa;
                 padding: 0;
             }
 
             iframe {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
                 position: fixed;
                 bottom: 0;
                 right: 0;
@@ -83,7 +86,8 @@ Avant de commencer, assurez-vous que votre machine dispose des éléments suivan
     </head>
 
     <body>
-        <iframe src="http://localhost:3000/" frameborder="0"></iframe>
+
+        <iframe src="http://localhost:3000/serve-widget" frameborder="0"></iframe>
     </body>
 
     </html>
