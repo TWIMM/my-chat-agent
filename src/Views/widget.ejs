@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/styles/index.css">
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <div class="chat-log">
+        <div class="log">
+        </div>
+        <div class="input">
+            <form>
+                <input type="text" class="user-input" placeholder="message..." />
+                <button>
+                    <i class="fa fa-paper-plane fa-2x" aria-hidden="true"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    <!-- Add these to your HTML head section -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.1/underscore-min.js"></script>
+    <script src="/js/ChatService.js"></script> <!-- Make sure this path is correct -->
+    <script src="/js/chatApp.js"></script> <!-- Make sure this path is correct -->
+
+
+
+</body>
+
+</html>

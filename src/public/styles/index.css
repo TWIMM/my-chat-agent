@@ -8,6 +8,7 @@ body {
 }
 
 .chat-log {
+    background: url("https://i.pinimg.com/736x/2b/45/cf/2b45cfec4c0d3c56aed4ccd30b61bd3a.jpg");
     width: 100%;
     height: 90%;
     border: 1px solid #f7f7f7;
@@ -77,6 +78,7 @@ button {
 }
 
 .user .content {
+    background: #ffffff;
     color: #000000;
     max-width: none;
 }
