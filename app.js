@@ -8,6 +8,7 @@ const HomeRoutes = require('./src/Routes/HomeRoutes');
 const AiRouter = require('./src/Routes/AiRoutes');
 const { DatabaseService } = require('./src/Services/DatabaseService');
 const databaseService = new DatabaseService();
+const AuthRoutes = require('./src/Routes/AuthRoutes');
 
 
 class App {
@@ -51,6 +52,8 @@ class App {
         // Routes to handle user-related endpoints
         this.app.use('/', HomeRoutes);  // Corrected reference to 'this.app'
         this.app.use('/ai-api', AiRouter); // Add this route
+        this.app.use('/auth', AuthRoutes); // Add this route
+
 
     }
 

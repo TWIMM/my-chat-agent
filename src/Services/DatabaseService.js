@@ -80,8 +80,8 @@ class DatabaseService {
             console.log('Connection has been established successfully.');
 
             // Sync models with the database, and ensure associations are set up
-            await sequelize.sync({ alter: true }); // alter: true to avoid dropping tables
-            console.log('Models synced with the database');
+            // await sequelize.sync({ alter: true }); // alter: true to avoid dropping tables
+            // console.log('Models synced with the database');
 
 
         } catch (error) {

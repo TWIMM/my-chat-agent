@@ -1,7 +1,9 @@
+const storageServicesInstance = require('../Services/StorageServices');
 
 class HomeController {
     static getHomePage(req, res) {
         const pageTitle = "Welcome !!";
+
         res.render('index', { title: pageTitle });
     }
 
@@ -12,6 +14,9 @@ class HomeController {
 
     static serveAdminPage(req, res) {
         const pageTitle = "Dashboard !!";
+        if (!storageServicesInstance.hasStorageVar("user_id")) {
+            return res.redirect('/auth/register');
+        }
         res.render('admin', { title: pageTitle });
     }
 
