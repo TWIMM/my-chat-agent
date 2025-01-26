@@ -40,7 +40,9 @@ document.querySelector('.reg_btn input').addEventListener('click', async () => {
 
         if (response.ok) {
             const result = await response.json();
-            Notiflix.Notify.success('User registered successfully!');
+            Notiflix.Notify.success('User registered successfully!').then(
+                window.location.href = "/auth/login"
+            );
             console.log(result);
         } else {
             const error = await response.json();
