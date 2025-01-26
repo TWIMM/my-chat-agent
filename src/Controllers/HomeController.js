@@ -14,7 +14,7 @@ class HomeController {
 
     static serveAdminPage(req, res) {
         const pageTitle = "Dashboard !!";
-        if (!storageServicesInstance.hasStorageVar("user_id")) {
+        if (!storageServicesInstance.hasStorageVar("user_key")) {
             return res.redirect('/auth/register');
         }
         res.render('admin', { title: pageTitle });
