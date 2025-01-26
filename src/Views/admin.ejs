@@ -29,8 +29,20 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="/iaagent" class="sidebar-link 2">
+                        <i class="fa-solid fa-gear fa-fw"></i>
+                        <span>Ai Agent</span>
+                    </a>
+                </li>
 
 
+                <li>
+                    <a href="businessmodel" class="sidebar-link 2">
+                        <i class="fa-solid fa-gear fa-fw"></i>
+                        <span>Business model</span>
+                    </a>
+                </li>
 
             </ul>
         </div>
@@ -55,20 +67,16 @@
                     <div class="box">
                         <div class="box-section1">
                             <div class="box-title">
-                                <h2>Site Control</h2>
-                                <p>Control The Website If There Is Maintenance</p>
+                                <h2>Account password</h2>
                             </div>
                         </div>
-                        <div class="settings-box-section2">
-                            <div class="settings-box-website-control">
-                                <div class="settings-box-title">
-                                    <p>Website Control</p>
-                                    <p>Open/Close Website And Type The Reason</p>
-                                </div>
-                                <span class="toggle"></span>
-                            </div>
+                        <div class="general-info-section2">
                             <form>
-                                <textarea name="" placeholder="Close Message Content"></textarea>
+                                <input type="text" placeholder="New password" id="new-password" />
+                                <input type="text" placeholder="Confirm password" id="confirm-password" />
+                                <div class="email">
+                                    <a href="/#">Change</a>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -82,13 +90,16 @@
                         </div>
                         <div class="general-info-section2">
                             <form>
-                                <label for="first-name">First Name</label>
-                                <input type="text" placeholder="First Name" id="first-name" />
-                                <label for="last-name">Last Name</label>
-                                <input type="text" placeholder="Last Name" id="last-name" />
+                                <label for="first-name"> Name</label>
+                                <input type="text" placeholder="Name" id="name" value="<%= dashData.user.name %>" />
+                                <label for="first-name"> Username</label>
+                                <input type="text" placeholder="Username" id="username"
+                                    value="<%= dashData.user.username %>" />
+                                <label for="last-name">Username</label>
+                                <input type="text" placeholder="Username" id="tel" value="<%= dashData.user.phone %>" />
                                 <label for="Email">Email</label>
                                 <div class="email">
-                                    <input type="email" disabled id="Email" value="zana.suleiman.44@gmail.com" />
+                                    <input type="email" disabled id="Email" value="<%= dashData.user.email %>" />
                                     <a href="/#">Change</a>
                                 </div>
                             </form>
@@ -103,13 +114,7 @@
                             </div>
                         </div>
                         <div class="security-info-section2">
-                            <div class="person-security-info">
-                                <div class="person-info">
-                                    <p style="font-weight: normal">Password</p>
-                                    <span>Last Change On 25/10/2021</span>
-                                </div>
-                                <a href="/#">Change</a>
-                            </div>
+
 
                             <div class="person-security-info">
                                 <div class="person-info">
@@ -119,13 +124,7 @@
                                 <span class="toggle toggle1"></span>
                             </div>
 
-                            <div class="person-security-info">
-                                <div class="person-info">
-                                    <p style="font-weight: normal">Devices</p>
-                                    <span>Check The Login Devices List</span>
-                                </div>
-                                <a href="/#">Devices</a>
-                            </div>
+
                         </div>
                     </div>
 

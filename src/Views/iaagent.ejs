@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/all-admin.min.css" />
+    <link rel="stylesheet" href="/styles/style-admin.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.bootstrap5.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/2.3.3/css/searchPanes.bootstrap5.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/3.0.0/css/select.bootstrap5.css">
+    <title>IA AGENT</title>
+</head>
+
+<body>
+    <div class="page-content">
+        <div class="sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-xmark xmark"></i>
+                <h3>BOT AGENT</h3>
+            </div>
+            <ul>
+
+
+                <li>
+                    <a href="/dashboard" class="sidebar-link 2">
+                        <i class="fa-solid fa-gear fa-fw"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/iaagent" class="sidebar-link 2">
+                        <i class="fa-solid fa-gear fa-fw"></i>
+                        <span>Ai Agent</span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="businessmodel" class="sidebar-link 2">
+                        <i class="fa-solid fa-gear fa-fw"></i>
+                        <span>Business model</span>
+                    </a>
+                </li>
+
+
+            </ul>
+        </div>
+        <main>
+            <div class="header">
+                <i class="fa-solid fa-bars bar-item"></i>
+                <div class="search">
+                    <input type="search" placeholder="Type A Keyword" />
+                </div>
+
+                <div class="profile">
+                    <span class="bell"><i class="fa-regular fa-bell fa-lg"></i></span>
+                    <img src="../images/avatar.png" alt="No Image" />
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="title">
+                    <h1>List</h1>
+                </div>
+
+                <div class="main-content-boxes">
+                    <div class="box">
+                        <div class="box-section1">
+                            <div class="box-title">
+                                <h2>Ai Agent List</h2>
+                            </div>
+                        </div>
+                        <div class="general-info-section2">
+                            <%- include('datatable') %>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="box-section1">
+                            <div class="box-title">
+                                <h2>Add ai agent</h2>
+                                <p>General Information About Ai Agent</p>
+                            </div>
+                        </div>
+                        <div class="general-info-section2">
+                            <form onsubmit="return false;">
+                                <label for="first-name">Name</label>
+                                <input type="text" placeholder="Name" id="name" value="" />
+
+                                <label for="first-name">Description</label>
+                                <textarea name="description" id="description" placeholder="Description"></textarea>
+                                <br><br>
+                                <label for="topics">Topics</label>
+                                <div class="multi-select">
+                                    <button type="button" class="select-option" data-value="topic1">Topic 1</button>
+                                    <button type="button" class="select-option" data-value="topic2">Topic 2</button>
+                                    <button type="button" class="select-option" data-value="topic3">Topic 3</button>
+                                    <button type="button" class="select-option" data-value="topic4">Topic 4</button>
+                                </div>
+                                <br>
+                                <p id="selected-topics">Selected Topics: None</p>
+                                <br><br>
+                                <div class="email">
+                                    <a href="/#">Change</a>
+                                </div>
+                            </form>
+
+                            <style>
+                                .multi-select {
+                                    display: flex !important;
+                                    gap: 10px !important;
+                                    flex-wrap: wrap !important;
+                                }
+
+                                .select-option {
+                                    padding: 10px 15px;
+                                    border: 1px solid #ddd !important;
+                                    border-radius: 5px;
+                                    color: black !important;
+                                    background-color: #d5d5d5 !important;
+                                    cursor: pointer;
+                                    transition: all 0.3s ease;
+                                }
+
+                                .select-option.selected {
+                                    background-color: #3a3a3a !important;
+                                    color: #fff !important;
+                                    border-color: #565756 !important;
+                                }
+
+                                .select-option:hover {
+                                    background-color: #e8f5e9;
+                                }
+                            </style>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.2.1/js/dataTables.bootstrap5.js"></script>
+    <script src="https://cdn.datatables.net/searchpanes/2.3.3/js/dataTables.searchPanes.js"></script>
+    <script src="https://cdn.datatables.net/searchpanes/2.3.3/js/searchPanes.bootstrap5.js"></script>
+    <script src="https://cdn.datatables.net/select/3.0.0/js/dataTables.select.js"></script>
+    <script src="https://cdn.datatables.net/select/3.0.0/js/select.bootstrap5.js"></script>
+    <script>
+        new DataTable('#example', {
+            layout: {
+                top1: 'searchPanes',
+                paging: true,
+                searching: true,
+                ordering: true,
+                pageLength: 5,
+            }
+
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const options = document.querySelectorAll(".select-option");
+            const selectedTopicsDisplay = document.getElementById("selected-topics");
+
+            const selectedTopics = new Set();
+
+            options.forEach((option) => {
+                option.addEventListener("click", () => {
+                    const value = option.dataset.value;
+
+                    // Toggle selection
+                    if (selectedTopics.has(value)) {
+                        selectedTopics.delete(value);
+                        option.classList.remove("selected");
+                    } else {
+                        selectedTopics.add(value);
+                        option.classList.add("selected");
+                    }
+
+                    // Update selected topics display
+                    selectedTopicsDisplay.textContent =
+                        selectedTopics.size > 0
+                            ? `Selected Topics: ${Array.from(selectedTopics).join(", ")}`
+                            : "Selected Topics: None";
+                });
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>

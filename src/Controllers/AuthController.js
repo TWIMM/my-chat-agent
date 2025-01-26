@@ -36,7 +36,7 @@ class AuthController {
 
             const payload = { id: user.id, username: user.username };
             const token = jwt.sign(payload, process.env.JWT_SECRET_KEY, { expiresIn: '6h' });
-            storageServicesInstance.setStorageVar('user_key', user.id);
+            storageServicesInstance.setStorageVar('user_key', email);
 
             return res.status(200).json({
                 success: true,

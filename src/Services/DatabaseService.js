@@ -32,6 +32,16 @@ const User = sequelize.define(
             allowNull: false,
             unique: true,
         },
+        facebook: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            unique: true,
+        },
+        instagram: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            unique: true,
+        },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -74,14 +84,72 @@ const AiAgent = sequelize.define(
     }
 );
 
+
+const userBusinessModel = sequelize.define(
+    'userBusinessModel',
+    {
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        adress: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        linkOfBusiness: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        topics: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
+        description: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
+        businessId: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
+        },
+    },
+    {
+        timestamps: true,
+    }
+);
+
 // Define associations
 User.hasMany(AiAgent, {
     foreignKey: 'userId', // Foreign key in AiAgent
     onDelete: 'CASCADE', // Delete agents when the user is deleted
 });
+User.hasMany(userBusinessModel, {
+    foreignKey: 'userId', // Foreign key in AiAgent
+    onDelete: 'CASCADE', // Delete agents when the user is deleted
+});
+
+
+userBusinessModel.belongsTo(User, {
+    foreignKey: 'userId', // Foreign key in AiAgent
+});
+
+
 AiAgent.belongsTo(User, {
     foreignKey: 'userId', // Foreign key in AiAgent
 });
+
+
+userBusinessModel.hasOne(AiAgent, {
+    foreignKey: 'businessModelId', // The foreign key in the AIAgent table
+    as: 'aiAgent', // Alias for the relationship
+});
+
+AiAgent.belongsTo(userBusinessModel, {
+    foreignKey: 'businessModelId', // The foreign key in the AIAgent table
+    as: 'businessModel', // Alias for the reverse relationship
+});
+
 
 class DatabaseService {
     constructor() { }
@@ -94,7 +162,7 @@ class DatabaseService {
 
             //Sync models with the database, and ensure associations are set up
             //await sequelize.sync({ alter: true }); // alter: true to avoid dropping tables
-            //console.log('Models synced with the database');
+            console.log('Models synced with the database');
 
 
         } catch (error) {
@@ -105,4 +173,4 @@ class DatabaseService {
 }
 
 // Export both the sequelize instance and the DatabaseService class
-module.exports = { sequelize, DatabaseService, User, AiAgent };
+module.exports = { sequelize, DatabaseService, User, AiAgent, userBusinessModel };
