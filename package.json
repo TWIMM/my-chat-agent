@@ -21,6 +21,7 @@
     "express": "^4.21.2",
     "mysql2": "^3.12.0",
     "node-cache": "^5.1.2",
+    "notiflix": "^3.2.8",
     "sequelize": "^6.37.5",
     "sequelize-cli": "^6.6.2"
   },
