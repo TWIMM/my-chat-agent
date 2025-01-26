@@ -14,6 +14,19 @@ const User = sequelize.define(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        username: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
+        },
+        gender: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        phone: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -79,9 +92,9 @@ class DatabaseService {
             await sequelize.authenticate();
             console.log('Connection has been established successfully.');
 
-            // Sync models with the database, and ensure associations are set up
-            // await sequelize.sync({ alter: true }); // alter: true to avoid dropping tables
-            // console.log('Models synced with the database');
+            //Sync models with the database, and ensure associations are set up
+            //await sequelize.sync({ alter: true }); // alter: true to avoid dropping tables
+            //console.log('Models synced with the database');
 
 
         } catch (error) {
@@ -92,4 +105,4 @@ class DatabaseService {
 }
 
 // Export both the sequelize instance and the DatabaseService class
-module.exports = { sequelize, DatabaseService };
+module.exports = { sequelize, DatabaseService, User, AiAgent };

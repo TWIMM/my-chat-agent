@@ -6,7 +6,7 @@ const router = express.Router();
 
 // Define home route
 router.get('/register', AuthController.getRegisterPage);
-router.post('/register', AuthController.Register);
+router.post('/register-user', AuthController.Register);
 
 
 module.exports = router;
