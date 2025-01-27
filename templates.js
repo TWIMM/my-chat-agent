@@ -1,0 +1,3 @@
+const templatePresentation = {
+    _text : ""
+}

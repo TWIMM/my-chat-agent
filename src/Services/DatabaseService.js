@@ -119,14 +119,18 @@ const userBusinessModel = sequelize.define(
     }
 );
 
+
+
 // Define associations
 User.hasMany(AiAgent, {
     foreignKey: 'userId', // Foreign key in AiAgent
-    onDelete: 'CASCADE', // Delete agents when the user is deleted
+    onDelete: 'CASCADE',
+    as: "AiAgent"// Delete agents when the user is deleted
 });
 User.hasMany(userBusinessModel, {
     foreignKey: 'userId', // Foreign key in AiAgent
-    onDelete: 'CASCADE', // Delete agents when the user is deleted
+    onDelete: 'CASCADE',
+    as: "userBusinessModel"// Delete agents when the user is deleted
 });
 
 
@@ -136,13 +140,14 @@ userBusinessModel.belongsTo(User, {
 
 
 AiAgent.belongsTo(User, {
-    foreignKey: 'userId', // Foreign key in AiAgent
+    foreignKey: 'userId',
+    as: "User"// Foreign key in AiAgent
 });
 
 
 userBusinessModel.hasOne(AiAgent, {
     foreignKey: 'businessModelId', // The foreign key in the AIAgent table
-    as: 'aiAgent', // Alias for the relationship
+    as: 'AiAgent', // Alias for the relationship
 });
 
 AiAgent.belongsTo(userBusinessModel, {

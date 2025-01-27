@@ -93,6 +93,9 @@ class HomeController {
 
 
     static getViewer(req, res) {
+        if (!storageServicesInstance.hasStorageVar("user_key")) {
+            return res.redirect('/auth/login');
+        }
         const pageTitle = "Viewer !!";
         res.render('viewer', { title: pageTitle });
     }

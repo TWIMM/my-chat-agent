@@ -1,3 +1,5 @@
+const { getAiAgentListByUser } = require("../../Controllers/AiAgentController");
+
 class ChatService {
     constructor(robotImageUrl) {
         this.robotImageUrl = robotImageUrl;
@@ -99,5 +101,35 @@ class ChatService {
                 $message.addClass('fadeInLeftBig');
             }
         }, 0);
+    }
+
+
+    async getAiAgentListByUser() {
+        const response = await fetch('/ai-api/ai_agent', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+
+
+
+        // Handle server response
+        if (response.ok) {
+            const result = await response.json();
+            if (result.success) {
+                Notiflix.Notify.success('Ai agent list retrieved successfully!');
+                result.AiAgent.forEach(element => {
+
+
+                });
+
+
+            } else {
+                Notiflix.Notify.success(result.message || 'Ai agent creation failed!');
+            }
+        } else {
+            Notiflix.Notify.failure('An error occurred during Ai agent creation.');
+        }
     }
 }

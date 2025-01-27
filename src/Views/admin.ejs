@@ -14,199 +14,169 @@
 
 <body>
     <div class="page-content">
-        <div class="sidebar">
-            <div class="brand">
-                <i class="fa-solid fa-xmark xmark"></i>
-                <h3>Dashboard</h3>
-            </div>
-            <ul>
+        <%- include('aside') %>
+            <main>
+                <div class="header">
+                    <i class="fa-solid fa-bars bar-item"></i>
+                    <div class="search">
+                        <input type="search" placeholder="Type A Keyword" />
+                    </div>
 
-
-                <li>
-                    <a href="/dashboard" class="sidebar-link 2">
-                        <i class="fa-solid fa-gear fa-fw"></i>
-                        <span>Settings</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/iaagent" class="sidebar-link 2">
-                        <i class="fa-solid fa-gear fa-fw"></i>
-                        <span>Ai Agent</span>
-                    </a>
-                </li>
-
-
-                <li>
-                    <a href="businessmodel" class="sidebar-link 2">
-                        <i class="fa-solid fa-gear fa-fw"></i>
-                        <span>Business model</span>
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-        <main>
-            <div class="header">
-                <i class="fa-solid fa-bars bar-item"></i>
-                <div class="search">
-                    <input type="search" placeholder="Type A Keyword" />
+                    <div class="profile">
+                        <span class="bell"><i class="fa-regular fa-bell fa-lg"></i></span>
+                        <img src="../images/avatar.png" alt="No Image" />
+                    </div>
                 </div>
+                <div class="main-content">
+                    <div class="title">
+                        <h1>Settings</h1>
+                    </div>
 
-                <div class="profile">
-                    <span class="bell"><i class="fa-regular fa-bell fa-lg"></i></span>
-                    <img src="../images/avatar.png" alt="No Image" />
-                </div>
-            </div>
-            <div class="main-content">
-                <div class="title">
-                    <h1>Settings</h1>
-                </div>
-
-                <div class="main-content-boxes">
-                    <div class="box">
-                        <div class="box-section1">
-                            <div class="box-title">
-                                <h2>Account password</h2>
+                    <div class="main-content-boxes">
+                        <div class="box">
+                            <div class="box-section1">
+                                <div class="box-title">
+                                    <h2>Account password</h2>
+                                </div>
+                            </div>
+                            <div class="general-info-section2">
+                                <form>
+                                    <input type="text" placeholder="New password" id="new-password" />
+                                    <input type="text" placeholder="Confirm password" id="confirm-password" />
+                                    <div class="email">
+                                        <a href="/#">Change</a>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                        <div class="general-info-section2">
-                            <form>
-                                <input type="text" placeholder="New password" id="new-password" />
-                                <input type="text" placeholder="Confirm password" id="confirm-password" />
-                                <div class="email">
+
+                        <div class="box">
+                            <div class="box-section1">
+                                <div class="box-title">
+                                    <h2>General Info</h2>
+                                    <p>General Information About Your Account</p>
+                                </div>
+                            </div>
+                            <div class="general-info-section2">
+                                <form>
+                                    <label for="first-name"> Name</label>
+                                    <input type="text" placeholder="Name" id="name" value="<%= dashData.user.name %>" />
+                                    <label for="first-name"> Username</label>
+                                    <input type="text" placeholder="Username" id="username"
+                                        value="<%= dashData.user.username %>" />
+                                    <label for="last-name">Username</label>
+                                    <input type="text" placeholder="Username" id="tel"
+                                        value="<%= dashData.user.phone %>" />
+                                    <label for="Email">Email</label>
+                                    <div class="email">
+                                        <input type="email" disabled id="Email" value="<%= dashData.user.email %>" />
+                                        <a href="/#">Change</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="box">
+                            <div class="box-section1">
+                                <div class="box-title">
+                                    <h2>Security Info</h2>
+                                    <p>Security Information About Your Account</p>
+                                </div>
+                            </div>
+                            <div class="security-info-section2">
+
+
+                                <div class="person-security-info">
+                                    <div class="person-info">
+                                        <p style="font-weight: normal">Two-Factor Authentication</p>
+                                        <span>Enable/Disable The Feature</span>
+                                    </div>
+                                    <span class="toggle toggle1"></span>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="box">
+                            <div class="box-section1">
+                                <div class="box-title">
+                                    <h2>Social Info</h2>
+                                    <p>Social Media Information</p>
+                                </div>
+                            </div>
+                            <div class="social-info-section2">
+                                <form>
+                                    <div class="social-info-icon">
+                                        <i class="fa-brands fa-instagram"></i>
+                                        <input type="text" placeholder="Instagram Username" />
+                                    </div>
+                                    <div class="social-info-icon">
+                                        <i class="fa-brands fa-facebook-f"></i>
+                                        <input type="text" placeholder="Facebook Username" />
+                                    </div>
+
                                     <a href="/#">Change</a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="box-section1 settings-section1">
+                                <div class="box-title">
+                                    <h2>Business Control</h2>
+                                    <p>Enable/Disable Business</p>
                                 </div>
-                            </form>
-                        </div>
-                    </div>
+                            </div>
+                            <div class="widgets-control-section2">
+                                <form>
+                                    <ul>
+                                        <li>
+                                            <input type="checkbox" id="one" />
+                                            <label for="one">Business 1</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="two" checked />
+                                            <label for="two">Business 2</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="three" />
+                                            <label for="three">Business 3</label>
+                                        </li>
 
-                    <div class="box">
-                        <div class="box-section1">
-                            <div class="box-title">
-                                <h2>General Info</h2>
-                                <p>General Information About Your Account</p>
+                                    </ul>
+                                </form>
                             </div>
                         </div>
-                        <div class="general-info-section2">
-                            <form>
-                                <label for="first-name"> Name</label>
-                                <input type="text" placeholder="Name" id="name" value="<%= dashData.user.name %>" />
-                                <label for="first-name"> Username</label>
-                                <input type="text" placeholder="Username" id="username"
-                                    value="<%= dashData.user.username %>" />
-                                <label for="last-name">Username</label>
-                                <input type="text" placeholder="Username" id="tel" value="<%= dashData.user.phone %>" />
-                                <label for="Email">Email</label>
-                                <div class="email">
-                                    <input type="email" disabled id="Email" value="<%= dashData.user.email %>" />
-                                    <a href="/#">Change</a>
+                        <div class="box">
+                            <div class="box-section1 settings-section1">
+                                <div class="box-title">
+                                    <h2>Statistiques</h2>
+                                    <p>Check Statistiques Time And Bot Efficiency</p>
                                 </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <div class="box">
-                        <div class="box-section1">
-                            <div class="box-title">
-                                <h2>Security Info</h2>
-                                <p>Security Information About Your Account</p>
                             </div>
-                        </div>
-                        <div class="security-info-section2">
-
-
-                            <div class="person-security-info">
-                                <div class="person-info">
-                                    <p style="font-weight: normal">Two-Factor Authentication</p>
-                                    <span>Enable/Disable The Feature</span>
-                                </div>
-                                <span class="toggle toggle1"></span>
+                            <div class="backup-mangager-section2">
+                                <form>
+                                    <ul>
+                                        <li>
+                                            <input type="radio" id="radio-one" name="time" />
+                                            <label for="radio-one">Daily</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" id="radio-two" name="time" checked />
+                                            <label for="radio-two">Weekly</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" id="radio-three" name="time" />
+                                            <label for="radio-three">Monthly</label>
+                                        </li>
+                                    </ul>
+                                </form>
                             </div>
 
-
                         </div>
-                    </div>
-
-                    <div class="box">
-                        <div class="box-section1">
-                            <div class="box-title">
-                                <h2>Social Info</h2>
-                                <p>Social Media Information</p>
-                            </div>
-                        </div>
-                        <div class="social-info-section2">
-                            <form>
-                                <div class="social-info-icon">
-                                    <i class="fa-brands fa-instagram"></i>
-                                    <input type="text" placeholder="Instagram Username" />
-                                </div>
-                                <div class="social-info-icon">
-                                    <i class="fa-brands fa-facebook-f"></i>
-                                    <input type="text" placeholder="Facebook Username" />
-                                </div>
-
-                                <a href="/#">Change</a>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div class="box-section1 settings-section1">
-                            <div class="box-title">
-                                <h2>Business Control</h2>
-                                <p>Enable/Disable Business</p>
-                            </div>
-                        </div>
-                        <div class="widgets-control-section2">
-                            <form>
-                                <ul>
-                                    <li>
-                                        <input type="checkbox" id="one" />
-                                        <label for="one">Business 1</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="two" checked />
-                                        <label for="two">Business 2</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="three" />
-                                        <label for="three">Business 3</label>
-                                    </li>
-
-                                </ul>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div class="box-section1 settings-section1">
-                            <div class="box-title">
-                                <h2>Statistiques</h2>
-                                <p>Check Statistiques Time And Bot Efficiency</p>
-                            </div>
-                        </div>
-                        <div class="backup-mangager-section2">
-                            <form>
-                                <ul>
-                                    <li>
-                                        <input type="radio" id="radio-one" name="time" />
-                                        <label for="radio-one">Daily</label>
-                                    </li>
-                                    <li>
-                                        <input type="radio" id="radio-two" name="time" checked />
-                                        <label for="radio-two">Weekly</label>
-                                    </li>
-                                    <li>
-                                        <input type="radio" id="radio-three" name="time" />
-                                        <label for="radio-three">Monthly</label>
-                                    </li>
-                                </ul>
-                            </form>
-                        </div>
-
                     </div>
                 </div>
-            </div>
-        </main>
+            </main>
     </div>
     <script src="/js/script.js"></script>
 </body>
