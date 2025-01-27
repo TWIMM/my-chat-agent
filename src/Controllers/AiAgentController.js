@@ -2,17 +2,44 @@ const { User, AiAgent, userBusinessModel } = require('../Services/DatabaseServic
 const GoogleGenerativeAIService = require('../Services/GeminiService');
 const bcrypt = require('bcrypt');
 const storageServicesInstance = require('../Services/StorageServices');
-
-
+const aiMotor = new GoogleGenerativeAIService(process.env.GEMINI_API_KEY);
+;
 class AiAgentController {
 
     constructor() {
 
     }
 
-    static async trainAiAgent() {
+    static async trainAiAgentFromSavedData(req, res) {
 
+        const { name } = req.body;
+
+        const aiAgent = await AiAgent.findOne({
+            where: { name: name }
+        });
+
+        const generalContext = `
+            Tu es ${aiAgent.name} , un assistant virtuel spécialisé pour ${aiAgent.name} , et son entreprise. 
+            Voici une description de toi : ${aiAgent.description}
+
+            Voici les règles que tu dois suivre :
+            1. Tu peux parler uniquement des sujets suivants :  ${aiAgent.topics}.
+            2. Ton rôle est de [préciser le rôle, par exemple : répondre aux questions sur les produits, guider les utilisateurs, etc.].
+            3. Voici quelques informations clés sur notre entreprise :
+                - Secteur d'activité : [secteur].
+                - Produits/Services principaux : [produits/services].
+                - Valeurs de l'entreprise : [valeurs].
+            4. Si une question sort de ton périmètre, réponds poliment que tu ne peux pas fournir cette information.
+        `;
+
+        let learningResult = await aiMotor.getAIResponse(generalContext);
+        console.log(learningResult);
+        return res.status(201).json({
+            success: true,
+            message: learningResult,
+        });
     }
+
 
 
     static async getAiAgentListByUser(req, res) {

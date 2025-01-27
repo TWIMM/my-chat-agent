@@ -31,4 +31,7 @@ router.post("/specific_ai_agent", AiAgentController.getSpecificAiAgent);
 
 router.post("/del_ai_agent", AiAgentController.delAiAgent);
 
+router.post('/train_ai', AiAgentController.trainAiAgentFromSavedData);
+
+
 module.exports = router;

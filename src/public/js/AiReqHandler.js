@@ -49,6 +49,35 @@ if (logBtn) {
 }
 
 
+/* train AI */
+const traintrigger = document.querySelector('#widgetselect');
+
+if (traintrigger) {
+    traintrigger.addEventListener('change', async () => {
+        const response = await fetch('/ai-api/train_ai', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: traintrigger.value
+            })
+        });
+
+
+        if (response.ok) {
+            const result = await response.json()
+            if (result.success) {
+                console.log(result.message);
+
+
+            }
+        }
+    });
+}
+
+
+
 /* Update Ai  */
 const updateBtonn = document.querySelector('#update_ia_agent');
 if (updateBtonn) {

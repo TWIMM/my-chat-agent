@@ -1,4 +1,3 @@
-const { getAiAgentListByUser } = require("../../Controllers/AiAgentController");
 
 class ChatService {
     constructor(robotImageUrl) {
@@ -9,6 +8,7 @@ class ChatService {
     // Initialize the chat by preloading the image and setting up the form submission
     init() {
         this.preloadImage();
+        this.getAiAgentListByUser();
         this.setupFormSubmitHandler();
     }
 
@@ -118,10 +118,15 @@ class ChatService {
         if (response.ok) {
             const result = await response.json();
             if (result.success) {
+                const select = document.getElementById('widgetselect');
+
+
                 Notiflix.Notify.success('Ai agent list retrieved successfully!');
                 result.AiAgent.forEach(element => {
-
-
+                    const option = document.createElement("option");
+                    option.value = element.name;
+                    option.textContent = element.name;
+                    select.appendChild(option);
                 });
 
 
