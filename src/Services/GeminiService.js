@@ -9,6 +9,8 @@ class GoogleGenerativeAIService {
     constructor(apiKey) {
         this.client = new GoogleGenerativeAI(apiKey);
         this.model = null;
+        this.chatSession = null;
+
     }
 
     async initializeModel(systemInstruction) {
@@ -16,6 +18,9 @@ class GoogleGenerativeAIService {
             this.model = await this.client.getGenerativeModel({
                 model: "gemini-1.5-flash", systemInstruction: systemInstruction,
             });
+
+            this.chatSession = this.model.startChat({ history: [] });
+
         } catch (error) {
             console.error("Error initializing Google Generative AI model:", error);
             throw error;
@@ -25,24 +30,20 @@ class GoogleGenerativeAIService {
 
 
     async getAIResponse(prompt, systemInstruction) {
-        // Check cache for existing response
         const cachedResponse = cache.get(prompt);
         if (cachedResponse) {
             console.log("Serving response from cache");
             return cachedResponse;
         }
 
-        // Ensure model is initialized
-        if (!this.model) {
+        if (!this.chatSession) {
             await this.initializeModel(systemInstruction);
         }
 
         try {
-            // Generate content using the model
-            const result = await this.model.generateContent(prompt);
+            const result = await this.chatSession.sendMessage(prompt);
             const aiResponse = result.response?.text() || "No response generated.";
 
-            // Cache the response for future use
             cache.set(prompt, aiResponse);
             return aiResponse;
         } catch (error) {

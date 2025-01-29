@@ -278,6 +278,8 @@ const retriever = async () => {
             result.AiAgent.forEach(element => {
 
                 const truncatedAiId = element.aiId.slice(0, 8) + "*****";
+
+                const truncatedAiDesc = element.description.slice(0, 15) + "...";
                 const idWithToolTip = `<span title="${element.aiId}">${truncatedAiId}</span>`;
 
                 const actionsButtons = `
@@ -289,7 +291,7 @@ const retriever = async () => {
 
                 table.row.add([
                     element.name,
-                    element.description,
+                    truncatedAiDesc,
                     idWithToolTip,
                     actionsButtons
                 ]).draw();
