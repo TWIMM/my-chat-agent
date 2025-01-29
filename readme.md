@@ -87,7 +87,7 @@ Avant de commencer, assurez-vous que votre machine dispose des éléments suivan
 
     <body>
 
-        <iframe src="http://localhost:3000/serve-widget" frameborder="0"></iframe>
+        <iframe src="http://localhost:3000/serve-widget/aiId" frameborder="0"></iframe>
     </body>
 
     </html>
