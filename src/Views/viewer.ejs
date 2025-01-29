@@ -9,7 +9,7 @@
         body {
             height: 100%;
             margin: 0;
-            background: #e0f7fa;
+            background: #ffffff;
             padding: 0;
         }
 
@@ -18,8 +18,19 @@
             position: fixed;
             bottom: 0;
             right: 0;
-            width: 70vh;
-            height: 70vh;
+            width: 35vw;
+            height: 100vh;
+            /* Half of the viewport height */
+            border: none;
+        }
+
+        .widy {
+            position: fixed;
+            bottom: 0;
+            font-family: monospace;
+            left: 5%;
+            width: 50vw;
+            height: 100vh;
             /* Half of the viewport height */
             border: none;
         }
@@ -28,6 +39,28 @@
 
 <body>
 
+    <div class="widy">
+        <h1>
+            Documentation
+        </h1>
+        <h2>
+            How to use ?
+        </h2>
+
+        <p>
+            Import our widget by passing the url in an iframe tag http://localhost:3000/serve-widget/aiId
+        </p>
+        <p>
+            aiId is the key to display the right Agent
+        </p>
+
+        <h2>
+            Code snippet
+        </h2>
+
+        <%- include('documentation') %>
+    </div>
+    <!-- http://localhost:3000/serve-widget/aiId -->
     <iframe src="http://localhost:3000/serve-widget" frameborder="0"></iframe>
 </body>
 
