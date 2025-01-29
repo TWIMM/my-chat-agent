@@ -6,6 +6,24 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
     dialect: 'mysql', // or 'postgres', 'sqlite', etc.
 });
 
+const Produit = sequelize.define(
+    "Produit",
+    {
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        price: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        description: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        }
+    }
+);
+
 // Define the User model
 const User = sequelize.define(
     'User',
@@ -134,6 +152,18 @@ User.hasMany(userBusinessModel, {
 });
 
 
+userBusinessModel.hasMany(
+    Produit, {
+    foreignKey: 'businessModelId', // Foreign key in AiAgent
+    as: "Produit"// Delete agents when the user is deleted
+}
+)
+
+Produit.belongsTo(userBusinessModel, {
+    foreignKey: 'businessModelId',
+    as: "User"// Foreign key in AiAgent
+});
+
 userBusinessModel.belongsTo(User, {
     foreignKey: 'userId', // Foreign key in AiAgent
 });
@@ -166,7 +196,7 @@ class DatabaseService {
             console.log('Connection has been established successfully.');
 
             //Sync models with the database, and ensure associations are set up
-            //await sequelize.sync({ alter: true }); // alter: true to avoid dropping tables
+            await sequelize.sync({ alter: true }); // alter: true to avoid dropping tables
             console.log('Models synced with the database');
 
 
