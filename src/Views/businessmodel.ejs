@@ -66,15 +66,113 @@
                                     <label for="first-name">Web link</label>
                                     <input type="text" placeholder="Web link" id="web_link" value="" />
 
+
+                                    <h6>Important </h6>
+                                    <div
+                                        style="background: #f5f5f5;padding:12px; font-weight: bold;border-radius: 5px; overflow-x: auto;  font-family: monospace;">
+                                        <p>Une liste de produit nourrit l'IA sur les produits que vous vendez afin de
+                                            realiser un accompagnement personnalisé </p>
+                                        <ul>
+                                            <li>Les prix</li>
+                                            <li>Les noms</li>
+                                            <li>Les descriptions</li>
+
+                                        </ul>
+                                        <p>Vous devez directement uploader votre liste </p>
+
+
+                                        <p>Vous pouvez telecharger des exemples de liste sql ou excel , ou json avec ces
+                                            liens
+                                            externes
+                                        </p>
+
+                                        <h6 style="font-weight: bold">https://solutis.vip/get_test_product/sql</h6>
+                                        <h6 style="font-weight: bold">https://solutis.vip/get_test_product/xsls</h6>
+                                        <h6 style="font-weight: bold">https://solutis.vip/get_test_product/json</h6>
+
+                                    </div>
+                                    <br>
+                                    <label style="color: white;" for="apiweb_link" class="custom-file-upload">
+                                        Ajouter un fichier de produits
+                                    </label>
+                                    <input type="file" id="apiweb_link" style="display: none;" />
+
+                                    <style>
+                                        /* Style pour le label personnalisé */
+                                        .custom-file-upload {
+                                            background-color: #00796b;
+                                            /* Couleur de fond du bouton */
+                                            color: white;
+                                            /* Couleur du texte */
+                                            padding: 10px 20px;
+                                            /* Espacement intérieur */
+                                            font-size: 16px;
+                                            /* Taille de la police */
+                                            border: 2px solid #004d40;
+                                            /* Bordure du bouton */
+                                            border-radius: 8px;
+                                            /* Coins arrondis */
+                                            cursor: pointer;
+                                            /* Curseur en forme de main */
+                                            font-weight: bold;
+                                            /* Texte en gras */
+                                            display: inline-block;
+                                            /* En ligne */
+                                            text-align: center;
+                                            /* Centrer le texte */
+                                            transition: background-color 0.3s ease, transform 0.3s ease;
+                                        }
+
+                                        /* Effet au survol du bouton */
+                                        .custom-file-upload:hover {
+                                            background-color: #004d40;
+                                            /* Changer la couleur au survol */
+                                            transform: scale(1.05);
+                                            /* Légère augmentation de taille au survol */
+                                        }
+
+                                        /* Effet au focus du fichier sélectionné */
+                                        input[type="file"]:focus+.custom-file-upload {
+                                            border-color: #004d40;
+                                            /* Bordure change au focus */
+                                        }
+                                    </style>
+
+
                                     <label for="first-name">Description</label>
                                     <textarea name="description" id="description" placeholder="Description"></textarea>
                                     <br><br>
                                     <label for="topics">Topics</label>
                                     <div class="multi-select">
-                                        <button type="button" class="select-option" data-value="topic1">Topic 1</button>
-                                        <button type="button" class="select-option" data-value="topic2">Topic 2</button>
-                                        <button type="button" class="select-option" data-value="topic3">Topic 3</button>
-                                        <button type="button" class="select-option" data-value="topic4">Topic 4</button>
+                                        <button type="button" class="select-option"
+                                            data-value="ecommerce">E-commerce</button>
+                                        <button type="button" class="select-option"
+                                            data-value="consulting">Consulting</button>
+                                        <button type="button" class="select-option" data-value="software">Développement
+                                            logiciel</button>
+                                        <button type="button" class="select-option" data-value="marketing">Marketing
+                                            digital</button>
+                                        <button type="button" class="select-option" data-value="design">Design
+                                            graphique</button>
+                                        <button type="button" class="select-option"
+                                            data-value="real-estate">Immobilier</button>
+                                        <button type="button" class="select-option" data-value="education">Éducation en
+                                            ligne</button>
+                                        <button type="button" class="select-option"
+                                            data-value="healthcare">Santé</button>
+                                        <button type="button" class="select-option" data-value="fitness">Fitness et
+                                            bien-être</button>
+                                        <button type="button" class="select-option"
+                                            data-value="food">Restauration</button>
+                                        <button type="button" class="select-option" data-value="travel">Voyages et
+                                            tourisme</button>
+                                        <button type="button" class="select-option" data-value="finance">Services
+                                            financiers</button>
+                                        <button type="button" class="select-option"
+                                            data-value="app-development">Développement d'applications mobiles</button>
+                                        <button type="button" class="select-option"
+                                            data-value="content-creation">Création de contenu</button>
+
                                     </div>
                                     <br>
                                     <p id="selected-topics">Selected Topics: None</p>
