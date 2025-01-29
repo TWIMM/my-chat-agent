@@ -47,12 +47,14 @@ class ChatService {
     } */
 
     sendMessageToServer(message) {
-        fetch('/ai-api/ai-response', {
+        const traintrigger = document.querySelector('#widgetselect');
+
+        fetch('/ai-api/train_ai', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ message }),
+            body: JSON.stringify({ message: message, name: traintrigger.value }),
         })
             .then((response) => response.json())
             .then((data) => {
@@ -104,6 +106,29 @@ class ChatService {
     }
 
 
+    async runInternHttpRequest() {
+        const response = await fetch('/ai-api/train_ai', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: traintrigger.value
+            })
+        });
+
+
+        if (response.ok) {
+            const result = await response.json()
+            if (result.success) {
+                console.log(result.message);
+
+
+            }
+        }
+    }
+
+
     async getAiAgentListByUser() {
         const response = await fetch('/ai-api/ai_agent', {
             method: 'GET',
@@ -128,6 +153,8 @@ class ChatService {
                     option.textContent = element.name;
                     select.appendChild(option);
                 });
+
+                this.runInternHttpRequest();
 
 
             } else {

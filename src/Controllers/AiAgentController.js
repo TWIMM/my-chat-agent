@@ -3,7 +3,7 @@ const GoogleGenerativeAIService = require('../Services/GeminiService');
 const bcrypt = require('bcrypt');
 const storageServicesInstance = require('../Services/StorageServices');
 const aiMotor = new GoogleGenerativeAIService(process.env.GEMINI_API_KEY);
-;
+
 class AiAgentController {
 
     constructor() {
@@ -12,15 +12,21 @@ class AiAgentController {
 
     static async trainAiAgentFromSavedData(req, res) {
 
-        const { name } = req.body;
+        let { name, message } = req.body;
+
+
 
         const aiAgent = await AiAgent.findOne({
             where: { name: name }
         });
-
+        if (!message) {
+            message = `Hello  ${aiAgent.name}`
+        }
         const generalContext = `
-            Tu es ${aiAgent.name} , un assistant virtuel spécialisé pour ${aiAgent.name} , et son entreprise. 
+            Tu te nomme ${aiAgent.name} , un assistant virtuel spécialisé pour ${aiAgent.name} , et son entreprise. 
             Voici une description de toi : ${aiAgent.description}
+
+            Mon entreprise se nomme :  ,  Mon Activité se résume à : DESC_BUSINESS  , 
 
             Voici les règles que tu dois suivre :
             1. Tu peux parler uniquement des sujets suivants :  ${aiAgent.topics}.
@@ -32,11 +38,11 @@ class AiAgentController {
             4. Si une question sort de ton périmètre, réponds poliment que tu ne peux pas fournir cette information.
         `;
 
-        let learningResult = await aiMotor.getAIResponse(generalContext);
+        let learningResult = await aiMotor.getAIResponse(message, generalContext);
         console.log(learningResult);
         return res.status(201).json({
             success: true,
-            message: learningResult,
+            response: learningResult,
         });
     }
 

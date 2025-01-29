@@ -6,13 +6,16 @@ const AiAgentController = require('../Controllers/AiAgentController');
 const aiService = new GoogleGenerativeAIService(process.env.GEMINI_API_KEY);
 
 
+
+//depreceted
+
 router.post('/ai-response', async (req, res) => {
     try {
-        const { message } = req.body;
+        const { message, name } = req.body;
         if (!message) {
             return res.status(400).json({ error: 'Message is required' });
         }
-
+        // to change , will bring error 
         const aiResponse = await aiService.getAIResponse(message);
         res.json({ response: aiResponse });
     } catch (error) {

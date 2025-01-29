@@ -4,22 +4,27 @@ const NodeCache = require("node-cache");
 // Initialize cache (cache responses for 1 hour)
 const cache = new NodeCache({ stdTTL: 3600 });
 
+
 class GoogleGenerativeAIService {
     constructor(apiKey) {
         this.client = new GoogleGenerativeAI(apiKey);
         this.model = null;
     }
 
-    async initializeModel() {
+    async initializeModel(systemInstruction) {
         try {
-            this.model = await this.client.getGenerativeModel({ model: "gemini-1.5-flash" });
+            this.model = await this.client.getGenerativeModel({
+                model: "gemini-1.5-flash", systemInstruction: systemInstruction,
+            });
         } catch (error) {
             console.error("Error initializing Google Generative AI model:", error);
             throw error;
         }
     }
 
-    async getAIResponse(prompt) {
+
+
+    async getAIResponse(prompt, systemInstruction) {
         // Check cache for existing response
         const cachedResponse = cache.get(prompt);
         if (cachedResponse) {
@@ -29,7 +34,7 @@ class GoogleGenerativeAIService {
 
         // Ensure model is initialized
         if (!this.model) {
-            await this.initializeModel();
+            await this.initializeModel(systemInstruction);
         }
 
         try {
