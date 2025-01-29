@@ -175,7 +175,7 @@
 
                                     </div>
                                     <br>
-                                    <p id="selected-topics">Selected Topics: None</p>
+                                    <p id="selected-topics"></p>
                                     <br><br>
                                     <div class="email">
                                         <a href="/#">Change</a>
@@ -263,8 +263,8 @@
                     // Update selected topics display
                     selectedTopicsDisplay.textContent =
                         selectedTopics.size > 0
-                            ? `Selected Topics: ${Array.from(selectedTopics).join(", ")}`
-                            : "Selected Topics: None";
+                            ? `${Array.from(selectedTopics).join(", ")}`
+                            : "";
                 });
             });
         });
